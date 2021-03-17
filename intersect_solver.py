@@ -57,6 +57,7 @@ def start(server, wait_time=None):
 
                 if assignment == -3:
                     print("We're done! Exiting.")
+                    time.sleep(5)
                     exit(0)
                 break # We have received an assignment
 
@@ -84,8 +85,10 @@ def start(server, wait_time=None):
 
         payload = {
             'container_id': container_id,
-            'solution': solution
+            'solution': str(solution)
         }
+
+        print("{} Solutions: ({}) - {}".format(container_id, len(solution.keys()), solution))
 
         url = "http://" + server + FINISHED_INTERSECT_ASSIGNMENT_ENDPOINT
         requests.post(url, data=payload)

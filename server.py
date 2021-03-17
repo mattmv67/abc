@@ -376,6 +376,9 @@ def intersect_request_assignment():
         print('producer already has checked out an assignment')
     if assignment[0] == -3:
         print('There are no assignments left to give.')
+
+    print("Handing out assignment to {}. Assignment: {}".format(container_id, assignment[0]))
+
     return jsonify({
         'assignment': assignment[0],
         'camera_position': assignment[1],
@@ -435,8 +438,8 @@ def get_pixel_defs():
 
 if __name__ == '__main__':
 
-    sum = 10000213
+    sum = 10000
 
     assignment_manager = AssignmentManager(sum)
 
-    app.run(host='localhost', port=5010)
+    app.run(host='192.168.1.9', port=5010)
